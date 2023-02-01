@@ -10,10 +10,10 @@ export const nav_home = "w-full pl-10 text-orange-500 h-32 text-7xl items-center
 export const nav_button = "w-96 pr-10 text-white h-32 text-5xl items-center justify-end flex flex-auto"
 
 // css for show page with snack details
-export const show_h2 = "text-7xl my-16 mx-16 text-center tracking-wider"
+export const show_h2 = "text-7xl my-16 mx-0 pb-10 w-full text-center tracking-wider shadow-xl  "
 
 export const details_page = "flex justify-center"
 export const details_img = "float-left ml-40 mr-20 border-double border-8 border-stone-500"
 export const details_head = "border-b-2 border-black pb-6"
-export const details_h1 = "text-6xl float-left mb-10"
+export const details_h3 = "text-6xl float-left mb-10"
 export const info = "text-3xl pb-5"
