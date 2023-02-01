@@ -1,0 +1,14 @@
+.modal {
+    margin: auto;
+    position: fixed;
+    top: -5%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 10;
+    max-width: 80%;
+    max-height: 90%;
+    box-shadow: 0 10px 55px -10px rgb(0 0 0 / 0.55);
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
