@@ -6,12 +6,14 @@ import Snack from "./Snack";
 const API = process.env.REACT_APP_API_URL;
 
 export default function Snacks() {
+
 // Set state for filter and search functions
   const [snacks, setSnacks] = useState([]);
   const [allSnacks , setAllSnacks] = useState([])
+  const [selectedSnacks, setSelectedSnacks] = useState([])
   const [searchSnack, setSearchSnack] = useState("")
 
-// useEffect creates an inital state of all snacks objects within an array
+// useEffect creates an inital state of all snack objects within an array
   useEffect(() => {
     axios
       .get(`${API}/snacks`)
@@ -22,30 +24,32 @@ export default function Snacks() {
       .catch((c) => console.warn("catch, c"));
   }, []);
 
-// Function filter snacks based on healthy/unhealthy and resets search bar onChange
+// Function filters snacks based on healthy/unhealthy and resets search bar onChange
   const handleSelect = (e) => {
     if (e.target.value === 'true' || e.target.value === 'false'){
       const filter = allSnacks.filter((snack) => {
         return snack.is_healthy.toString() === e.target.value
       })
       setSnacks(filter)
+      setSelectedSnacks(filter)
     } else {
       setSnacks(allSnacks)
+      setSelectedSnacks(allSnacks)
     }
     setSearchSnack("")
   }
   
-  // Filter function for handleTextChange below
+  // Filter function for handleTextChange function below
     function filterSnacks(search){
       return(
-        snacks.filter((snack) => snack.name.toLowerCase().match(search.toLowerCase()))
+        selectedSnacks.filter((snack) => snack.name.toLowerCase().match(search.toLowerCase()))
       ) 
     }
 
 // Function that searchs through the snacks array for a match to the search
   const handleTextChange = (e) => {
     const search = e.target.value
-    const result = search ? filterSnacks(search) : snacks
+    const result = search ? filterSnacks(search) : selectedSnacks
     setSnacks(result)
     setSearchSnack(search)
   }
