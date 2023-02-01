@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+
 import axios from "axios";
 import Snack from "./Snack";
 
@@ -66,6 +67,42 @@ export default function Snacks() {
     }
   }
 
+
+
+
+function deleteMultiple(){
+const arr = []
+
+snacks.forEach((x) => {
+  if(x.selected){
+    arr.push(x.id)
+
+  }
+})
+for(let i = 0 ; i < arr.length; i++){
+  axios
+  .delete(`${API}/snacks/${arr[i]}`)
+  .then(
+    (response) => {
+      const copySnackArray = [...snacks];
+      const indexDeletedSnacks = copySnackArray.flatMap((snack , i) => {
+        return(
+          snack.arr === arr ? i : []
+        ) 
+      });
+  
+      copySnackArray.splice(indexDeletedSnacks, 1);
+      setSnacks(copySnackArray);
+    },
+    (error) => console.error(error)
+  )
+  .catch((c) => console.warn("catch", c));
+}
+}
+
+
+
+
   return (
     <article className="flex flex-col justify-center items-center">
       <div className="flex justify-around">
@@ -97,6 +134,9 @@ export default function Snacks() {
             placeholder="Name"
             className="shadow-2xl appearance-none rounded w-96 py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
           />
+        </div>
+        <div>
+          <button onClick={() => {deleteMultiple()}}>Delete</button>
         </div>
       </div>
       <div className="flex flex-wrap justify-center items-start m-2">
