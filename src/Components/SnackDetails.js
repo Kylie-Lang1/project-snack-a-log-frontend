@@ -49,7 +49,7 @@ function SnackDetails() {
             <img src={snack.image} alt={`${snack.name} image`} className={tailwind.details_img} />
             <section className="info">
                 <div className={tailwind.details_head}>
-                    <h1 className={tailwind.details_h1}>{snack.name}</h1>
+                    <h3 className={tailwind.details_h3}>{snack.name}</h3>
                     { snack.is_healthy ? <img src={heartSolid}  className={tailwind.heart}/> : <img src={heartOutline}  className={tailwind.heart}/> }
                 </div>
                 <div className="float-none">
