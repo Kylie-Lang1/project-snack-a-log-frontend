@@ -18,8 +18,9 @@ export default function Snacks() {
     axios
       .get(`${API}/snacks`)
       .then((res) => {
-        setAllSnacks(res.data)
         setSnacks(res.data);
+        setAllSnacks(res.data)
+        setSelectedSnacks(res.data)
       })
       .catch((c) => console.warn("catch, c"));
   }, []);
