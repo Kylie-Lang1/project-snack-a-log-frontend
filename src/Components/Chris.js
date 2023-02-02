@@ -35,7 +35,7 @@ export default function Chris() {
             </h4>
             <div className="flex p-4 justify-center items-center">
               <a
-                href=""
+                href="linkto:"
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 text-5xl text-blue-500"
@@ -43,7 +43,7 @@ export default function Chris() {
                 <AiFillLinkedin />
               </a>
               <a
-                href=""
+                href="linkto:"
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 text-5xl text-slate-800"
