@@ -124,6 +124,8 @@ const newRow = () => {
           checked={snack.is_healthy}
           />
         </div>
+        )
+       })}
       </form>
     </div>
   );
