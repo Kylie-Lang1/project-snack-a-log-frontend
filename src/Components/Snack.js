@@ -5,7 +5,7 @@ import solid from "../assets/heart-solid.png";
 
 export default function Snack({ snack }) {
   return (
-    <section className="m-4 bg-white shadow-2xl rounded-lg">
+    <section className="m-4 bg-white shadow-2xl rounded-lg w-3/12">
         <div>
           <input
           type="checkbox"
@@ -21,7 +21,7 @@ export default function Snack({ snack }) {
           <img
             src={snack.image}
             alt={snack.name}
-            className="object-cover h-72 w-96 rounded-t-lg"
+            className="object-cover h-80 w-full rounded-t-lg"
           ></img>
         </Link>
         <h5 className="inline w-96 break-all ml-1">

@@ -12,3 +12,15 @@
     padding: 30px;
     border-radius: 10px;
 }
+
+.dev {
+    margin: 0;
+    z-index: 10;
+    width: 25%;
+    height: auto;
+    position: absolute;
+    box-shadow: 0 10px 55px -10px rgb(0 0 0 / 0.55);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
