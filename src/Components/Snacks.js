@@ -70,7 +70,11 @@ export default function Snacks() {
     }
   }
 
-function deleteMultiple(){
+
+
+
+function deleteMultiple(id){
+
 const arr = []
 
 snacks.forEach((x) => {
@@ -84,22 +88,17 @@ for(let i = 0 ; i < arr.length; i++){
   .delete(`${API}/snacks/${arr[i]}`)
   .then(
     (response) => {
-      const copySnackArray = [...snacks];
-      const indexDeletedSnacks = copySnackArray.map((snack , i) => {
-        return(
-          snack.id === arr[i] ? i : []
-        ) 
+     
+      const indexDeletedSnacks = snacks.findIndex((snack) => {
+       
+          return snack.id === arr[i] 
+        
       });
-      for(let j = 0; j < arr.length ; j++){
-        copySnackArray.splice(indexDeletedSnacks, 1);
-        setSnacks(copySnackArray);
-      }
+        snacks.splice(indexDeletedSnacks, 1);
+        setSnacks([...snacks]);
     },
     (error) => console.error(error)
   )
-  .then(() => {
-    navigate(`/snacks`)
-  })
   .catch((c) => console.warn("catch", c));
 }
 }

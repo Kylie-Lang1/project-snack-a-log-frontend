@@ -60,6 +60,21 @@ function SnackDetails() {
     updateBookmark(copySnack, id)
   }
 
+
+
+  // For loop to determine if snack is healthy or unhealthy
+    if (
+      (Number(snack.fiber) < 5 && Number(snack.protein) < 5) ||
+      snack.added_sugar > 5
+    ) {
+      snack.is_healthy = false;
+    } else {
+      snack.is_healthy = true;
+    }
+  
+
+
+
   return (
     <div className={tailwind.details_page}>
         <div className="details-wrapper md:flex">
