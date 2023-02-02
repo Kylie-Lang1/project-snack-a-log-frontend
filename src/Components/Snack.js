@@ -19,11 +19,11 @@ export default function Snack({ snack }) {
         </h5>
         {snack.is_healthy ? (
           <span>
-            <img src={solid} className="w-16 inline ml-4"></img>
+            <img src={solid} alt="solid" className="w-16 inline ml-4"></img>
           </span>
         ) : (
           <span>
-            <img src={regular} className="w-16 h-16 inline ml-4"></img>
+            <img src={regular} alt="regular" className="w-16 h-16 inline ml-4"></img>
           </span>
         )}
         <div>

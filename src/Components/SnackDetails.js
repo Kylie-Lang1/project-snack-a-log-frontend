@@ -8,7 +8,7 @@ import SnackEditForm from "./SnackEditForm";
 import { FaBookmark } from "react-icons/fa"
 import { FaRegBookmark } from "react-icons/fa"
 import * as tailwind from "../css/styles";
-import { IconContext } from "react-icons";
+
 
 // API url for http requests
 const API = process.env.REACT_APP_API_URL;
@@ -32,12 +32,6 @@ function SnackDetails() {
       });
   }, [id, snack]);
   
-// if statement to determine if snack is healthy or unhealthy
-  if ((Number(snack.fiber) < 5 && Number(snack.protein) < 5) || snack.added_sugar > 5 ){
-    snack.is_healthy = false
-  } else {
-    snack.is_healthy = true
-  }
 
 // Delete request
   const handleDelete = () => {
@@ -53,7 +47,7 @@ function SnackDetails() {
           <div className="relative p-0 m-0">
             <img 
                 src={snack.image} 
-                alt={`${snack.name} image`} 
+                alt={`${snack.name} pic`} 
                 className={tailwind.details_img} 
               />
             { 
@@ -84,9 +78,9 @@ function SnackDetails() {
               <div className={tailwind.details_head}>
                   <h3 className={tailwind.details_h3}>{snack.name}</h3>
                   { snack.is_healthy ? (
-                      <img src={heartSolid}  className={tailwind.heart}/>
+                      <img src={heartSolid} alt="sold"  className={tailwind.heart}/>
                     ) : (
-                      <img src={heartOutline}  className={tailwind.heart}/> 
+                      <img src={heartOutline} alt="regular" className={tailwind.heart}/> 
                     )}
               </div>
               <div className="float-none">
