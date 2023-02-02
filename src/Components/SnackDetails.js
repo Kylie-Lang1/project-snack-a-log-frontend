@@ -62,10 +62,11 @@ function SnackDetails() {
 
   return (
     <div className={tailwind.details_page}>
-        <div className="details-wrapper flex">
+        <div className="details-wrapper md:flex">
           <div className="relative p-0 m-0">
             <img 
                 src={snack.image} 
+                className={tailwind.details_img}
                 alt={`${snack.name} pic`} 
                 className={tailwind.details_img} 
               />

@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import { useNavigate , Link} from 'react-router-dom';
-import axios from 'axios';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 
 const API = process.env.REACT_APP_API_URL;
-
 
 
 function SnackNewForm(){
@@ -22,28 +21,27 @@ function SnackNewForm(){
 
   const remove = (form) => {
     const filter = snack.filter((s) => s !== form);
-    setSnack(filter)
-}
+    setSnack(filter);
+  };
 
-
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
   const addSnack = (newSnack) => {
     axios
       .post(`${API}/snacks`, newSnack)
-      .then(() => {
+      .then(
+        () => {
           navigate(`/snacks`);
         },
         (error) => console.error(error)
       )
-      .catch((c) => console.warn('catch', c));
+      .catch((c) => console.warn("catch", c));
   };
 
-
-  const handleTextChange = (i , e , s) => {
-   let temp = [...snack]
-   temp[i][s] = e.target.value;
-   setSnack(temp)
+  const handleTextChange = (i, e, s) => {
+    let temp = [...snack];
+    temp[i][s] = e.target.value;
+    setSnack(temp);
   };
 
   const handleCheckboxChange = () => {
@@ -66,10 +64,11 @@ const newRow = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    for(let i = 0; i < snack.length; i++){
-      addSnack(snack[i])
+    for (let i = 0; i < snack.length; i++) {
+      addSnack(snack[i]);
     }
   };
+
 
   return (
     <div className="New">
@@ -125,17 +124,9 @@ const newRow = () => {
           checked={snack.is_healthy}
           />
         </div>
-
-        )
-       })}
-       <p onClick={newRow}>Add new row</p>
-       <input type="submit" />
       </form>
-      <Link to={`/snacks`}>
-        <button>Nevermind!</button>
-      </Link>
     </div>
   );
 }
 
-export default SnackNewForm
+export default SnackNewForm;

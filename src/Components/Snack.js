@@ -5,7 +5,17 @@ import solid from "../assets/heart-solid.png";
 
 export default function Snack({ snack, isFavorite }) {
   return (
-    <section className="m-4 bg-white shadow-2xl rounded-lg">
+    <section className="m-4 bg-white shadow-2xl rounded-lg md:w-3/12">
+        <div>
+          <input
+          type="checkbox"
+          onChange={(e) => {
+            let value = e.target.value
+            snack.selected = value
+            return snack
+          }}
+          />
+        </div>
       <div>
         <Link to={`/snacks/${snack.id}`}>
           <img

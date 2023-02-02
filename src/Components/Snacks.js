@@ -109,8 +109,8 @@ console.log(snacks)
 
   return (
     <article className="flex flex-col justify-center items-center">
-      <div className="flex justify-around">
-        <div className="is_healthy inline-block relative w-64">
+      <div className="sm:flex justify-center items-center">
+        <div className="is_healthy inline-block relative w-64 mx-4">
           <label
             htmlFor="searchSnack"
             className="block text-gray-700 font-bold mb-2"
@@ -139,10 +139,21 @@ console.log(snacks)
             className="shadow-2xl appearance-none rounded w-96 py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div>
-          <button onClick={() => {deleteMultiple()}}>Delete</button>
+        <div className="inline-block relative mx-4">
+          <label htmlFor="deleteSnacks" className="block font-bold mb-2">
+            Delete multiple snacks:
+          </label>
+          <button
+            onClick={() => {
+              deleteMultiple();
+            }}
+            class="bg-indigo-900 hover:bg-orange-500 text-white border-none font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Delete
+          </button>
         </div>
       </div>
+      <div className="sm:flex flex-wrap justify-center items-start m-2">
       <h3 className={tailwind.index_h3}>
         Favorites:
       </h3>
@@ -156,7 +167,7 @@ console.log(snacks)
       <h3 className={tailwind.index_h3}>
         Snacks:
       </h3>
-      <div className="flex flex-wrap justify-center items-start m-2">
+     
         {snacks.map((snack) => {
           if(!snack.bookmarked){
             return <Snack key={snack.id} snack={snack} />;
