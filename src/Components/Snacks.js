@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Snack from "./Snack";
 
@@ -12,6 +12,9 @@ export default function Snacks() {
   const [allSnacks, setAllSnacks] = useState([]);
   const [selectedSnacks, setSelectedSnacks] = useState([]);
   const [searchSnack, setSearchSnack] = useState("");
+
+
+let navigate = useNavigate()
 
   // useEffect creates an inital state of all snack objects within an array
   useEffect(() => {
@@ -85,23 +88,27 @@ for(let i = 0 ; i < arr.length; i++){
   .then(
     (response) => {
       const copySnackArray = [...snacks];
-      const indexDeletedSnacks = copySnackArray.flatMap((snack , i) => {
+      const indexDeletedSnacks = copySnackArray.map((snack , i) => {
         return(
-          snack.arr === arr ? i : []
+          snack.id === arr[i] ? i : []
         ) 
       });
-  
-      copySnackArray.splice(indexDeletedSnacks, 1);
-      setSnacks(copySnackArray);
+      for(let j = 0; j < arr.length ; j++){
+        copySnackArray.splice(indexDeletedSnacks, 1);
+        setSnacks(copySnackArray);
+      }
     },
     (error) => console.error(error)
   )
+  .then(() => {
+    navigate(`/snacks`)
+  })
   .catch((c) => console.warn("catch", c));
 }
 }
 
 
-
+console.log(snacks)
 
   return (
     <article className="flex flex-col justify-center items-center">

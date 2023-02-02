@@ -15,6 +15,7 @@ function SnackNewForm(){
     added_sugar: "",
    is_healthy: false,
    selected: false,
+   bookmarked: false,
    image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image"
   }]);
 
@@ -57,11 +58,10 @@ const newRow = () => {
     added_sugar: "",
    is_healthy: false,
    selected: false,
+   bookmarked: false,
    image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image"
   }])
 }
-
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -69,7 +69,6 @@ const newRow = () => {
       addSnack(snack[i])
     }
   };
-console.log(snack)
 
   return (
     <div className="New">
