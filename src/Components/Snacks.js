@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Snack from "./Snack";
+import * as tailwind from "../css/styles"
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -12,11 +13,10 @@ export default function Snacks() {
   const [allSnacks, setAllSnacks] = useState([]);
   const [selectedSnacks, setSelectedSnacks] = useState([]);
   const [searchSnack, setSearchSnack] = useState("");
+  
+  let navigate = useNavigate()
 
-
-let navigate = useNavigate()
-
-  // useEffect creates an inital state of all snack objects within an array
+  // useEffect creates an inital state of all snack objects within an array for multiple state hooks
   useEffect(() => {
     axios
       .get(`${API}/snacks`)
@@ -69,9 +69,6 @@ let navigate = useNavigate()
       object.is_healthy = true;
     }
   }
-
-
-
 
 function deleteMultiple(){
 const arr = []
@@ -146,9 +143,24 @@ console.log(snacks)
           <button onClick={() => {deleteMultiple()}}>Delete</button>
         </div>
       </div>
+      <h3 className={tailwind.index_h3}>
+        Favorites:
+      </h3>
       <div className="flex flex-wrap justify-center items-start m-2">
         {snacks.map((snack) => {
-          return <Snack key={snack.id} snack={snack} />;
+          if (snack.bookmarked){
+            return <Snack key={snack.id} snack={snack} />;
+          }
+        })}
+      </div>
+      <h3 className={tailwind.index_h3}>
+        Snacks:
+      </h3>
+      <div className="flex flex-wrap justify-center items-start m-2">
+        {snacks.map((snack) => {
+          if(!snack.bookmarked){
+            return <Snack key={snack.id} snack={snack} />;
+          }
         })}
       </div>
     </article>
