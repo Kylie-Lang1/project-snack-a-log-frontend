@@ -44,10 +44,6 @@ function SnackNewForm(){
     setSnack(temp);
   };
 
-  const handleCheckboxChange = () => {
-    setSnack({ ...snack, is_healthy: !snack.is_healthy });
-  };
-
 
 const newRow = () => {
   setSnack([...snack, {
@@ -116,16 +112,22 @@ const newRow = () => {
           placeholder="http://"
           onChange={(e) => handleTextChange(i, e, 'image')}
           />
-          <label htmlFor="is_healthy">Healthy:</label>
+          {/* <label htmlFor="is_healthy">Healthy:</label>
           <input
           id="is_healthy"
           type="checkbox"
-          onChange={handleCheckboxChange}
+          onChange={(e) => handleCheckboxChange(i, e, 'is_healthy')}
+          value={x?.is_healthy}
           checked={snack.is_healthy}
-          />
+          /> */}
         </div>
         )
        })}
+
+       <p onClick={newRow}>Add new row</p>
+       <input type="submit" />
+
+
       </form>
     </div>
   );

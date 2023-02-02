@@ -17,8 +17,12 @@ function SnackEditForm(){
         protein: "", 
         added_sugar: "",
         is_healthy: false, 
+        selected: false,
+        bookmarked: false,
         image: 'https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image'
       }]);
+
+      
       const [viewModal, setViewModal] = useState(false)
 
 
@@ -116,13 +120,13 @@ function SnackEditForm(){
                     placeholder="http://"
                     onChange={handleTextChange}
                     />
-                    <label htmlFor="is_healthy">Healthy:</label>
+                    {/* <label htmlFor="is_healthy">Healthy:</label>
                     <input
                       id="is_healthy"
                       type="checkbox"
                       onChange={handleCheckboxChange}
                       checked={snack.is_healthy}
-                    />
+                    /> */}
                   </div>
 
                   <button className={tailwind.button} onClick={handleSubmit} >Submit</button>
