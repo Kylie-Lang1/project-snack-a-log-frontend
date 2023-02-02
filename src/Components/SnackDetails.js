@@ -83,7 +83,6 @@ function SnackDetails() {
                 src={snack.image} 
                 className={tailwind.details_img}
                 alt={`${snack.name} pic`} 
-                className={tailwind.details_img} 
               />
             { 
             bookmarked ? (

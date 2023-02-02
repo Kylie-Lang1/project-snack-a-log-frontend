@@ -123,8 +123,11 @@ const newRow = () => {
         </div>
         )
        })}
+
        <p onClick={newRow}>Add new row</p>
        <input type="submit" />
+
+
       </form>
     </div>
   );
