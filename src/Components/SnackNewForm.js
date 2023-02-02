@@ -14,6 +14,7 @@ function SnackNewForm(){
     protein: "",
     added_sugar: "",
    is_healthy: false,
+   selected: false,
    image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image"
   }]);
 
@@ -55,6 +56,7 @@ const newRow = () => {
     protein: "",
     added_sugar: "",
    is_healthy: false,
+   selected: false,
    image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image"
   }])
 }

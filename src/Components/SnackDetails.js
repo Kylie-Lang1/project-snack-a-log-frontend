@@ -5,7 +5,10 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import heartSolid from "../assets/heart-solid.png";
 import heartOutline from "../assets/heart-regular.png";
 import SnackEditForm from "./SnackEditForm";
+import { FaBookmark } from "react-icons/fa"
+import { FaRegBookmark } from "react-icons/fa"
 import * as tailwind from "../css/styles";
+import { IconContext } from "react-icons";
 
 // API url for http requests
 const API = process.env.REACT_APP_API_URL;
@@ -14,6 +17,7 @@ function SnackDetails() {
 // Defining variables
   const { id } = useParams();
   const [snack, setSnack] = useState({});
+  const [bookmarked, setBookmarked] = useState(false)
   let navigate = useNavigate();
 
 // useEffet runs when a different snack ID is requested or the snack object changes after edit
@@ -45,44 +49,68 @@ function SnackDetails() {
 
   return (
     <div className={tailwind.details_page}>
-      <div className="details-wrapper flex">
-        <img
-          src={snack.image}
-          alt={`${snack.name} image`}
-          className={tailwind.details_img}
-        />
-        <section className="info">
-          <div className={tailwind.details_head}>
-            <h1 className={tailwind.details_h1}>{snack.name}</h1>
-            {snack.is_healthy ? (
-              <img src={heartSolid} className={tailwind.heart} />
+        <div className="details-wrapper flex">
+          <div className="relative p-0 m-0">
+            <img 
+                src={snack.image} 
+                alt={`${snack.name} image`} 
+                className={tailwind.details_img} 
+              />
+            { 
+            bookmarked ? (
+              <>
+                <FaBookmark className={tailwind.bookmark} />
+                <button 
+                  className={tailwind.bookmark_text} 
+                  onClick={() => setBookmarked(false)}
+                >
+                  Unbookmark Snack
+                </button>
+              </>
             ) : (
-              <img src={heartOutline} className={tailwind.heart} />
-            )}
+              <>
+                <FaRegBookmark className={tailwind.bookmark} />
+                <button 
+                  className={tailwind.bookmark_text} 
+                  onClick={() => setBookmarked(true)}
+                >
+                  Bookmark Snack
+                </button>
+              </>    
+              )
+            }
           </div>
-          <div className="float-none">
-            <p className={`${tailwind.info} pt-10`}>
-              <span className="font-bold">Fiber:</span> {snack.fiber} g
-            </p>
-            <p className={tailwind.info}>
-              <span className="font-bold">Protein:</span> {snack.protein} g
-            </p>
-            <p className={tailwind.info}>
-              <span className="font-bold">Added Sugar:</span>{" "}
-              {snack.added_sugar} g
-            </p>
-          </div>
-          <div className="buttons mt-8">
-            <Link to="/snacks">
-              <button className={tailwind.button}>Back</button>
-            </Link>
-            <button className={tailwind.button} onClick={handleDelete}>
-              Delete
-            </button>
-            <SnackEditForm />
-          </div>
-        </section>
-      </div>
+          <section className="info">
+              <div className={tailwind.details_head}>
+                  <h3 className={tailwind.details_h3}>{snack.name}</h3>
+                  { snack.is_healthy ? (
+                      <img src={heartSolid}  className={tailwind.heart}/>
+                    ) : (
+                      <img src={heartOutline}  className={tailwind.heart}/> 
+                    )}
+              </div>
+              <div className="float-none">
+                  <p className={`${tailwind.info} pt-10`}>
+                    <span className="font-bold">Fiber:</span> {snack.fiber} g
+                  </p>
+                  <p className={tailwind.info}>
+                    <span className="font-bold" >Protein:</span> {snack.protein} g
+                  </p>
+                  <p className={tailwind.info}>
+                    <span className="font-bold">Added Sugar:</span> {snack.added_sugar} g
+                  </p>
+              </div>
+              <div className="buttons mt-8">
+                  <Link to="/snacks">
+                      <button className={tailwind.button}>Back</button>
+                  </Link>
+                  <button className={tailwind.button} onClick={handleDelete}>
+                    Delete
+                  </button>
+                  <SnackEditForm />
+              </div>
+          </section>
+        </div>
     </div>
   );
 }
