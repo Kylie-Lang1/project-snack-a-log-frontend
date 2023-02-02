@@ -8,7 +8,6 @@ import SnackEditForm from "./SnackEditForm";
 import { FaBookmark } from "react-icons/fa"
 import { FaRegBookmark } from "react-icons/fa"
 import * as tailwind from "../css/styles";
-import { IconContext } from "react-icons";
 
 // API url for http requests
 const API = process.env.REACT_APP_API_URL;
@@ -17,15 +16,16 @@ function SnackDetails() {
 // Defining variables
   const { id } = useParams();
   const [snack, setSnack] = useState({});
-  const [bookmarked, setBookmarked] = useState(false)
+  const [bookmarked, setBookmarked] = useState()
   let navigate = useNavigate();
 
-// useEffet runs when a different snack ID is requested or the snack object changes after edit
+// useEffet runs when a different snack ID is requested or when the snack object is changed afer edit
   useEffect(() => {
     axios
       .get(`${API}/snacks/${id}`)
       .then((res) => {
         setSnack(res.data);
+        setBookmarked(res.data.bookmarked)
       })
       .catch((c) => {
         console.warn("catch", c);
@@ -39,13 +39,32 @@ function SnackDetails() {
     snack.is_healthy = true
   }
 
-// Delete request
+// Delete request for delete button
   const handleDelete = () => {
     axios
     .delete(`${API}/snacks/${id}`)
     .then(() => navigate(`/snacks`))
     .catch((c) => console.warn("catch", c));
   };
+
+// Put request for bookmark button
+  const updateBookmark = (updatedSnack, id) => {
+    axios
+      .put(`${API}/snacks/${id}`, updatedSnack)
+      .then(() => navigate(`/snacks/${id}`))
+      .catch(c => console.warn('catch', c));
+}
+
+// onClick function for bookmark button to update bookmark and snack.bookmark state
+  const handleBookmark = () => {
+    setBookmarked(!bookmarked)
+
+    const copySnack = {...snack}
+    copySnack.bookmarked = !snack.bookmarked
+    setSnack(copySnack)
+    
+    updateBookmark(copySnack, id)
+  }
 
   return (
     <div className={tailwind.details_page}>
@@ -62,7 +81,7 @@ function SnackDetails() {
                 <FaBookmark className={tailwind.bookmark} />
                 <button 
                   className={tailwind.bookmark_text} 
-                  onClick={() => setBookmarked(false)}
+                  onClick={handleBookmark}
                 >
                   Unbookmark Snack
                 </button>
@@ -72,7 +91,7 @@ function SnackDetails() {
                 <FaRegBookmark className={tailwind.bookmark} />
                 <button 
                   className={tailwind.bookmark_text} 
-                  onClick={() => setBookmarked(true)}
+                  onClick={handleBookmark}
                 >
                   Bookmark Snack
                 </button>
