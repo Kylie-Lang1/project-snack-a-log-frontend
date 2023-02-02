@@ -11,7 +11,7 @@ export default function Snack({ snack }) {
           <img
             src={snack.image}
             alt={snack.name}
-            className="object-cover h-72 w-96 rounded-t-lg"
+            className="object-cover h-80 w-full rounded-t-lg"
           ></img>
         </Link>
         <h5 className="inline w-96 break-all ml-1">
@@ -19,13 +19,23 @@ export default function Snack({ snack }) {
         </h5>
         {snack.is_healthy ? (
           <span>
-            <img src={solid} className="w-16 inline ml-4"></img>
+            <img src={solid} alt="solid" className="w-16 inline ml-4"></img>
           </span>
         ) : (
           <span>
-            <img src={regular} className="w-16 h-16 inline ml-4"></img>
+            <img src={regular} alt="regular" className="w-16 h-16 inline ml-4"></img>
           </span>
         )}
+        <div>
+          <input
+          type="checkbox"
+          onChange={(e) => {
+            let value = e.target.value
+            snack.selected = value
+            return snack
+          }}
+          />
+        </div>
       </div>
     </section>
   );

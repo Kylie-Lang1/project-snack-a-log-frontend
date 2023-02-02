@@ -14,6 +14,8 @@ function SnackNewForm(){
     protein: "",
     added_sugar: "",
    is_healthy: false,
+   selected: false,
+   bookmarked: false,
    image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image"
   }]);
 
@@ -44,8 +46,9 @@ function SnackNewForm(){
    setSnack(temp)
   };
 
- 
-
+  const handleCheckboxChange = () => {
+    setSnack({ ...snack, is_healthy: !snack.is_healthy });
+  };
 
 
 const newRow = () => {
@@ -55,11 +58,11 @@ const newRow = () => {
     protein: "",
     added_sugar: "",
    is_healthy: false,
+   selected: false,
+   bookmarked: false,
    image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image"
   }])
 }
-
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -67,7 +70,6 @@ const newRow = () => {
       addSnack(snack[i])
     }
   };
-console.log(snack)
 
   return (
     <div className="New">
@@ -114,6 +116,13 @@ console.log(snack)
           value={x?.image}
           placeholder="http://"
           onChange={(e) => handleTextChange(i, e, 'image')}
+          />
+          <label htmlFor="is_healthy">Healthy:</label>
+          <input
+          id="is_healthy"
+          type="checkbox"
+          onChange={handleCheckboxChange}
+          checked={snack.is_healthy}
           />
         </div>
 
