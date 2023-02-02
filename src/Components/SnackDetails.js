@@ -8,7 +8,6 @@ import SnackEditForm from "./SnackEditForm";
 import { FaBookmark } from "react-icons/fa"
 import { FaRegBookmark } from "react-icons/fa"
 import * as tailwind from "../css/styles";
-import { IconContext } from "react-icons";
 
 // API url for http requests
 const API = process.env.REACT_APP_API_URL;
@@ -17,29 +16,24 @@ function SnackDetails() {
 // Defining variables
   const { id } = useParams();
   const [snack, setSnack] = useState({});
-  const [bookmarked, setBookmarked] = useState(false)
+  const [bookmarked, setBookmarked] = useState()
   let navigate = useNavigate();
 
-// useEffet runs when a different snack ID is requested or the snack object changes after edit
+// useEffet runs when a different snack ID is requested or when the snack object is changed afer edit
   useEffect(() => {
     axios
       .get(`${API}/snacks/${id}`)
       .then((res) => {
         setSnack(res.data);
+        setBookmarked(res.data.bookmarked)
       })
       .catch((c) => {
         console.warn("catch", c);
       });
   }, [id, snack]);
   
-// if statement to determine if snack is healthy or unhealthy
-  if ((Number(snack.fiber) < 5 && Number(snack.protein) < 5) || snack.added_sugar > 5 ){
-    snack.is_healthy = false
-  } else {
-    snack.is_healthy = true
-  }
 
-// Delete request
+// Delete request for delete button
   const handleDelete = () => {
     axios
     .delete(`${API}/snacks/${id}`)
@@ -47,14 +41,34 @@ function SnackDetails() {
     .catch((c) => console.warn("catch", c));
   };
 
+// Put request for bookmark button
+  const updateBookmark = (updatedSnack, id) => {
+    axios
+      .put(`${API}/snacks/${id}`, updatedSnack)
+      .then(() => navigate(`/snacks/${id}`))
+      .catch(c => console.warn('catch', c));
+}
+
+// onClick function for bookmark button to update bookmark and snack.bookmark state
+  const handleBookmark = () => {
+    setBookmarked(!bookmarked)
+
+    const copySnack = {...snack}
+    copySnack.bookmarked = !snack.bookmarked
+    setSnack(copySnack)
+    
+    updateBookmark(copySnack, id)
+  }
+
   return (
     <div className={tailwind.details_page}>
         <div className="details-wrapper md:flex">
           <div className="relative p-0 m-0">
             <img 
                 src={snack.image} 
-                alt={`${snack.name} image`} 
                 className={tailwind.details_img}
+                alt={`${snack.name} pic`} 
+                className={tailwind.details_img} 
               />
             { 
             bookmarked ? (
@@ -62,7 +76,7 @@ function SnackDetails() {
                 <FaBookmark className={tailwind.bookmark} />
                 <button 
                   className={tailwind.bookmark_text} 
-                  onClick={() => setBookmarked(false)}
+                  onClick={handleBookmark}
                 >
                   Unbookmark Snack
                 </button>
@@ -72,7 +86,7 @@ function SnackDetails() {
                 <FaRegBookmark className={tailwind.bookmark} />
                 <button 
                   className={tailwind.bookmark_text} 
-                  onClick={() => setBookmarked(true)}
+                  onClick={handleBookmark}
                 >
                   Bookmark Snack
                 </button>
@@ -84,9 +98,9 @@ function SnackDetails() {
               <div className={tailwind.details_head}>
                   <h3 className={tailwind.details_h3}>{snack.name}</h3>
                   { snack.is_healthy ? (
-                      <img src={heartSolid}  className={tailwind.heart}/>
+                      <img src={heartSolid} alt="sold"  className={tailwind.heart}/>
                     ) : (
-                      <img src={heartOutline}  className={tailwind.heart}/> 
+                      <img src={heartOutline} alt="regular" className={tailwind.heart}/> 
                     )}
               </div>
               <div className="float-none">

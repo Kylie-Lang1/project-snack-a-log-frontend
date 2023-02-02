@@ -33,7 +33,7 @@ export default function Kylie() {
             </h4>
             <div className="flex p-4 justify-center items-center">
               <a
-                href=""
+                href="https://www.linkedin.com/in/kylie-lang-8ba021207/"
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 text-5xl text-blue-500"
@@ -41,7 +41,7 @@ export default function Kylie() {
                 <AiFillLinkedin />
               </a>
               <a
-                href=""
+                href="https://github.com/Kylie-Lang1"
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 text-5xl text-slate-800"

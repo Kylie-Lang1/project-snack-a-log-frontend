@@ -23,6 +23,10 @@ export const details_head = "border-b-2 border-black pb-6";
 export const details_h3 = "text-6xl float-left mb-10";
 export const info = "text-3xl pb-5";
 
-export const bookmark = "absolute bottom--10 left-5 scale-150 mt-5";
-export const bookmark_text =
-  "text-blue-500 absolute bottom--10 left-10 ml-5 border-none hover:underline hover:text-blue-500";
+export const bookmark = "absolute bottom--10 left-5 scale-150 mt-5"
+export const bookmark_text = "text-blue-500 absolute bottom--10 left-10 ml-5 border-none hover:underline hover:text-blue-500"
+
+// css for index page
+export const index_h3 = "text-left text-gray-700 font-bold text-4xl w-full my-10 ml-16 justify-left"
+export const index_heart = "h-14 pl-10 mt-16"
+

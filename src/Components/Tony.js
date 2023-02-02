@@ -23,23 +23,20 @@ export default function Tony() {
         {viewModal ? (
           <div className="dev">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip 
+             Currently learning Fullstack Web Development at the Pursuit Institute. 
             </p>
             <h4 className="p-4 text-center">
               Contact me <span>&#9786;</span>
             </h4>
             <div className="flex p-4 justify-center items-center">
-              <a href="" target="_blank" rel="noreferrer" className="px-4 text-5xl text-blue-500">
+              <a href="https://www.linkedin.com/in/tony-hoang-3a4907182/" target="_blank" rel="noreferrer" className="px-4 text-5xl text-blue-500">
                 <AiFillLinkedin />
               </a>
-              <a href="" target="_blank" rel="noreferrer" className="px-4 text-5xl text-slate-800">
+              <a href="https://github.com/TonyH98" target="_blank" rel="noreferrer" className="px-4 text-5xl text-slate-800">
                 <FaGithubSquare />
               </a>
               <a
-                href="mailto: "
+                href="mailto: tonyhoang@pursuit.org "
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 text-5xl text-red-500"

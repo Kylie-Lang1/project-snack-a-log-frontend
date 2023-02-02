@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Snack from "./Snack";
+import * as tailwind from "../css/styles"
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -12,8 +13,10 @@ export default function Snacks() {
   const [allSnacks, setAllSnacks] = useState([]);
   const [selectedSnacks, setSelectedSnacks] = useState([]);
   const [searchSnack, setSearchSnack] = useState("");
+  
+  let navigate = useNavigate()
 
-  // useEffect creates an inital state of all snack objects within an array
+  // useEffect creates an inital state of all snack objects within an array for multiple state hooks
   useEffect(() => {
     axios
       .get(`${API}/snacks`)
@@ -67,9 +70,6 @@ export default function Snacks() {
     }
   }
 
-
-
-
 function deleteMultiple(){
 const arr = []
 
@@ -85,23 +85,27 @@ for(let i = 0 ; i < arr.length; i++){
   .then(
     (response) => {
       const copySnackArray = [...snacks];
-      const indexDeletedSnacks = copySnackArray.flatMap((snack , i) => {
+      const indexDeletedSnacks = copySnackArray.map((snack , i) => {
         return(
-          snack.arr === arr ? i : []
+          snack.id === arr[i] ? i : []
         ) 
       });
-  
-      copySnackArray.splice(indexDeletedSnacks, 1);
-      setSnacks(copySnackArray);
+      for(let j = 0; j < arr.length ; j++){
+        copySnackArray.splice(indexDeletedSnacks, 1);
+        setSnacks(copySnackArray);
+      }
     },
     (error) => console.error(error)
   )
+  .then(() => {
+    navigate(`/snacks`)
+  })
   .catch((c) => console.warn("catch", c));
 }
 }
 
 
-
+console.log(snacks)
 
   return (
     <article className="flex flex-col justify-center items-center">
@@ -150,8 +154,24 @@ for(let i = 0 ; i < arr.length; i++){
         </div>
       </div>
       <div className="sm:flex flex-wrap justify-center items-start m-2">
+      <h3 className={tailwind.index_h3}>
+        Favorites:
+      </h3>
+      <div className="flex flex-wrap justify-center items-start m-2">
         {snacks.map((snack) => {
-          return <Snack key={snack.id} snack={snack} />;
+          if (snack.bookmarked){
+            return <Snack key={snack.id} snack={snack} />;
+          }
+        })}
+      </div>
+      <h3 className={tailwind.index_h3}>
+        Snacks:
+      </h3>
+     
+        {snacks.map((snack) => {
+          if(!snack.bookmarked){
+            return <Snack key={snack.id} snack={snack} />;
+          }
         })}
       </div>
     </article>
