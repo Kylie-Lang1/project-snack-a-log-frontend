@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate , Link, useParams} from 'react-router-dom';
+import { useNavigate , useParams} from 'react-router-dom';
 import axios from 'axios';
 import * as tailwind from "../css/styles";
 import "../css/modal.css";
@@ -39,7 +39,9 @@ function SnackEditForm(){
         setSnack({...snack, [event.target.id]: event.target.value})
        };
     
-
+       const handleCheckboxChange = () => {
+        setSnack({ ...snack, is_healthy: !snack.is_healthy });
+      };
     useEffect(() => {
         axios.get(`${API}/snacks/${id}`)
         .then(
@@ -110,6 +112,13 @@ function SnackEditForm(){
                     placeholder="http://"
                     onChange={handleTextChange}
                     />
+                    <label htmlFor="is_healthy">Healthy:</label>
+                    <input
+                      id="is_healthy"
+                      type="checkbox"
+                      onChange={handleCheckboxChange}
+                      checked={snack.is_healthy}
+                    />
                   </div>
 
                   <button className={tailwind.button} onClick={handleSubmit} >Submit</button>
@@ -126,4 +135,4 @@ function SnackEditForm(){
     }
     
     export default SnackEditForm
-    {/* <p onClick={newRow}>Add new row</p> */}
+   
