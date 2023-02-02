@@ -85,14 +85,16 @@ for(let i = 0 ; i < arr.length; i++){
   .then(
     (response) => {
       const copySnackArray = [...snacks];
-      const indexDeletedSnacks = copySnackArray.flatMap((snack , i) => {
+      const indexDeletedSnacks = copySnackArray.map((snack , i) => {
         return(
           snack.arr === arr ? i : []
         ) 
       });
-  
-      copySnackArray.splice(indexDeletedSnacks, 1);
-      setSnacks(copySnackArray);
+      for(let j = 0; j < arr.length ; j++){
+        copySnackArray.splice(indexDeletedSnacks, 1);
+        setSnacks(copySnackArray);
+
+      }
     },
     (error) => console.error(error)
   )
@@ -101,7 +103,7 @@ for(let i = 0 ; i < arr.length; i++){
 }
 
 
-
+console.log(snacks)
 
   return (
     <article className="flex flex-col justify-center items-center">

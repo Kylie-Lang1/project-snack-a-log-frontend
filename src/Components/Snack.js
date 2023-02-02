@@ -5,17 +5,7 @@ import solid from "../assets/heart-solid.png";
 
 export default function Snack({ snack }) {
   return (
-    <section className="m-4 bg-white shadow-2xl rounded-lg w-3/12">
-        <div>
-          <input
-          type="checkbox"
-          onChange={(e) => {
-            let value = e.target.value
-            snack.selected = value
-            return snack
-          }}
-          />
-        </div>
+    <section className="m-4 bg-white shadow-2xl rounded-lg">
       <div>
         <Link to={`/snacks/${snack.id}`}>
           <img
@@ -36,6 +26,16 @@ export default function Snack({ snack }) {
             <img src={regular} className="w-16 h-16 inline ml-4"></img>
           </span>
         )}
+        <div>
+          <input
+          type="checkbox"
+          onChange={(e) => {
+            let value = e.target.value
+            snack.selected = value
+            return snack
+          }}
+          />
+        </div>
       </div>
     </section>
   );
