@@ -16,11 +16,11 @@
 .dev {
     margin: 0;
     z-index: 10;
-    width: 25%;
+    width: 250px;
     height: auto;
-    position: absolute;
     box-shadow: 0 10px 55px -10px rgb(0 0 0 / 0.55);
     background-color: white;
-    padding: 20px;
+    padding: 10px;
+    margin-top: 0.5em;
     border-radius: 10px;
 }
