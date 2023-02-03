@@ -23,10 +23,7 @@ export default function Chris() {
         {viewModal ? (
           <div className="dev">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip
+            Currently a fellow at Pursuit, an intensive 12- month software engineering fellowship with a 9%, I am learning and and enhancing my developer skills to create programs and applications that helps teach students how to Dj. Surrounded by technology all my life, my love and appreciation started in middle school when I picked up a trumpet for the first time. A few years later, in high school, I came across the art of DJing, combining music and technology to create different kind of art. I have continued doing that to this day, but along my journey, i have took on roles working with children, including being a Playworks Coach at schools in Brooklyn for two years, which got me more interested in teaching other the craft I love.
             </p>
             <h4 className="p-4 text-center">
               Contact me <span>&#9786;</span>
