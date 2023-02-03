@@ -23,7 +23,7 @@ export default function Kylie() {
         {viewModal ? (
           <div className="dev">
             <p>
-              My name is Kylie. I am a Pursuit fellow working on gaining full-stack development skills with goals of progressing in the constantly growing field of technology.
+              My name is Kylie. I am a Pursuit fellow working on gaining full-stack development skills with goals of advancing my career in the tech industry.
             </p>
             <h4 className="p-4 text-center">
               Contact me <span>&#9786;</span>
