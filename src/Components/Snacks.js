@@ -14,7 +14,6 @@ export default function Snacks() {
   const [filteredSnacks, setFilteredSnacks] = useState([]);
   const [searchSnack, setSearchSnack] = useState("");
   const [shownSnacks, setShownSnacks] = useState([])
-  const [deleteMany, setDeleteMany] = useState(false)
   
   let navigate = useNavigate()
 
@@ -72,42 +71,39 @@ export default function Snacks() {
     }
   }
 
-  // Fucntion to delete multiple selected snacks for handleDelete function below
-  function deleteMultiple(){
+  
+  // Fucntion to delete multiple selected snacks
+  function deleteMultiple(id){
+
     const arr = []
-
-    snacks.forEach((snack) => {
-      console.log(snack.name)
-      console.log(snack)
-      if(snack.selected){
-        arr.push(snack.id)
-        console.log("added to arr")
+    
+    snacks.forEach((x) => {
+      if(x.selected){
+        arr.push(x.id)
       }
-      console.log(arr)
+      console.log(x, arr)
     })
-
     for(let i = 0 ; i < arr.length; i++){
       axios
       .delete(`${API}/snacks/${arr[i]}`)
       .then(
         (response) => {
+         
           const indexDeletedSnacks = snacks.findIndex((snack) => {
+           
               return snack.id === arr[i] 
+            
           });
-          snacks.splice(indexDeletedSnacks, 1);
-          setSnacks([...snacks]);
+            snacks.splice(indexDeletedSnacks, 1);
+            setSnacks([...snacks]);
+          
         },
         (error) => console.error(error)
       )
       .catch((c) => console.warn("catch", c));
     }
-  }
+    }
 
-  // handleDeletes 
-  const handleDeletes = () => {
-    deleteMultiple()
-    setDeleteMany(false)
-  }
 
   return (
     <article className="flex flex-col justify-center items-center">
@@ -142,26 +138,17 @@ export default function Snacks() {
           />
         </div>
         <div className="inline-block relative mx-4">
-          <label htmlFor="deleteSnacks" className="block font-bold mb-2">
+        <label htmlFor="deleteSnacks" className="block font-bold mb-2">
             Delete multiple snacks:
           </label>
-          {
-            deleteMany ? (
-              <button
-                onClick={handleDeletes}
-                className="bg-orange-500 hover:bg-indigo-900 text-white border-none font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:text-white focus:bg-orange-500"
-              >
-                Delete
-              </button>
-            ) : (
-              <button
-                onClick={() => setDeleteMany(true)}
-                className="bg-indigo-900 hover:bg-orange-500 text-white border-none font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:text-white"
-              >
-                Delete Snacks
-              </button>
-            )
-          }
+          <button
+            onClick={() => {
+              deleteMultiple();
+            }}
+            class="bg-indigo-900 hover:bg-orange-500 text-white border-none font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Delete
+          </button>
         </div>
       </div>
       <div className="sm:flex flex-wrap justify-center items-start m-2">
@@ -178,7 +165,7 @@ export default function Snacks() {
                     key={snack.id}
                     id={snack.id}
                     snack={snack}
-                    deleteMany={deleteMany}
+                 
                   />
                 )
               }
@@ -189,7 +176,7 @@ export default function Snacks() {
                     key={snack.id} 
                     snack={snack} 
                     id={snack.id}   
-                    deleteMany={deleteMany} 
+                 
                   /> 
                 )
               }
@@ -208,7 +195,7 @@ export default function Snacks() {
                     key={snack.id}
                     id={snack.id}
                     snack={snack}
-                    deleteMany={deleteMany}
+               
                   />
                 )
               }
@@ -219,7 +206,7 @@ export default function Snacks() {
                     key={snack.id} 
                     snack={snack} 
                     id={snack.id}   
-                    deleteMany={deleteMany} 
+           
                   /> 
                 )
               }

@@ -9,14 +9,16 @@ import * as tailwind from "../css/styles"
 
 const API = process.env.REACT_APP_API_URL
 
-export default function Snack({ snack, id, deleteMany }) {
+export default function Snack({ snack, id }) {
 
   const [indexSnack, setIndexSnack] = useState(snack);
   let navigate = useNavigate()
 
   const handleSelect = (e) => {
-      let isSelected = e.target.checked
-      snack.selected = isSelected
+    let value = e.target.value
+    snack.selected = value
+    console.log(e.target.value)
+    return snack
   }
 
   // Put request for bookmark button
@@ -49,17 +51,10 @@ export default function Snack({ snack, id, deleteMany }) {
         </Link>
         <div className="flex items-center relative">
           <div className="flex flex-auto items-center">
-            {
-              deleteMany ? (
-                <input
-                  type="checkbox"
-                  onChange={handleSelect}
-                  className="float-left item-align-center ml-2"
-                  />
-              ) : (
-                null
-              )
-            }
+          <input
+          type="checkbox"
+          onChange={handleSelect}
+          />
             <h5 className="inline break-normal px-2 py-2 truncate w-64"> 
               <Link to={`/snacks/${snack.id}`}>{snack.name}</Link>
             </h5>
