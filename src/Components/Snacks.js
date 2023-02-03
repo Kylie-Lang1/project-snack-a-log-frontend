@@ -96,12 +96,15 @@ for(let i = 0 ; i < arr.length; i++){
       });
         snacks.splice(indexDeletedSnacks, 1);
         setSnacks([...snacks]);
+      
     },
     (error) => console.error(error)
   )
   .catch((c) => console.warn("catch", c));
 }
 }
+
+
 
 
 console.log(snacks)
