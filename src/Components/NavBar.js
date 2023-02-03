@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import * as tailwind from "../css/styles";
-import Logo from "../assets/icons8-nachos-50.png";
+import Logo from "../assets/icons8-nachos-50 (1).png";
 
 function NavBar() {
   return (
