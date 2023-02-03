@@ -5,15 +5,21 @@ import "../css/modal.css";
 import { AiFillLinkedin } from "react-icons/ai";
 import { FaGithubSquare } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import pic from "../assets/22e044ad-3db5-4e0d-936b-e3daf368cc02.jpeg"
 
 export default function Chris() {
   const [viewModal, setViewModal] = useState(false);
 
   return (
     <div className="flex flex-col p-4 m-4">
-      <h3 className="text-4xl">Chris King</h3>
-      <h5>Developer</h5>
-      <div>
+      <div className="flex">
+        <img src={pic} alt="pic" className="w-20 h-20 rounded-full"></img>
+        <div className="px-2">
+          <h3 className="text-4xl">Chris King</h3>
+          <h5>Developer</h5>
+        </div>
+      </div>
+      <div className="pt-2">
         <button
           className={tailwind.button}
           onClick={() => setViewModal(!viewModal)}
