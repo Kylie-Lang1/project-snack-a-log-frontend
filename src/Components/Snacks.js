@@ -103,11 +103,6 @@ export default function Snacks() {
     }
   }
 
-  // handleDeletes 
-  const handleDeletes = () => {
-    deleteMultiple()
-    setDeleteMany(false)
-  }
 
   return (
     <article className="flex flex-col justify-center items-center">
@@ -178,7 +173,7 @@ export default function Snacks() {
                     key={snack.id}
                     id={snack.id}
                     snack={snack}
-                    deleteMany={deleteMany}
+                   
                   />
                 )
               }
@@ -189,7 +184,7 @@ export default function Snacks() {
                     key={snack.id} 
                     snack={snack} 
                     id={snack.id}   
-                    deleteMany={deleteMany} 
+          
                   /> 
                 )
               }
@@ -208,7 +203,7 @@ export default function Snacks() {
                     key={snack.id}
                     id={snack.id}
                     snack={snack}
-                    deleteMany={deleteMany}
+                    
                   />
                 )
               }
@@ -219,7 +214,7 @@ export default function Snacks() {
                     key={snack.id} 
                     snack={snack} 
                     id={snack.id}   
-                    deleteMany={deleteMany} 
+                 
                   /> 
                 )
               }
