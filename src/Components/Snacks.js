@@ -165,7 +165,6 @@ export default function Snacks() {
                     key={snack.id}
                     id={snack.id}
                     snack={snack}
-                 
                   />
                 )
               }
@@ -176,7 +175,6 @@ export default function Snacks() {
                     key={snack.id} 
                     snack={snack} 
                     id={snack.id}   
-                 
                   /> 
                 )
               }
@@ -195,7 +193,6 @@ export default function Snacks() {
                     key={snack.id}
                     id={snack.id}
                     snack={snack}
-               
                   />
                 )
               }
@@ -206,7 +203,6 @@ export default function Snacks() {
                     key={snack.id} 
                     snack={snack} 
                     id={snack.id}   
-           
                   /> 
                 )
               }

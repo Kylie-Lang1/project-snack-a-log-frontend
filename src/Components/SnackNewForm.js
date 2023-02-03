@@ -57,6 +57,8 @@ function SnackNewForm() {
         is_healthy: false,
         selected: false,
         bookmarked: false,
+
+
         image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image",
       },
     ]);
@@ -212,3 +214,23 @@ function SnackNewForm() {
 }
 
 export default SnackNewForm;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
