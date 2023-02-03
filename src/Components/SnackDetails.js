@@ -32,13 +32,21 @@ function SnackDetails() {
       });
   }, [id, snack]);
   
-// Delete request for delete button
-  const handleDelete = () => {
+// Delete request for delete function below
+  const deleteSnack = () => {
     axios
     .delete(`${API}/snacks/${id}`)
     .then(() => navigate(`/snacks`))
     .catch((c) => console.warn("catch", c));
   };
+
+// handleDelete function for delete button
+const handleDelete = () => {
+  let text = "Are you sure you want to delete?"
+  if (window.confirm(text) === true) {
+    deleteSnack()
+  }
+}
 
 // Put request for bookmark button
   const updateBookmark = (updatedSnack, id) => {
