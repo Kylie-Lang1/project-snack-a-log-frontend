@@ -26,7 +26,7 @@ export default function Snacks() {
         setSelectedSnacks(res.data)
       })
       .catch((c) => console.warn("catch, c"));
-  }, []);
+  }, [snacks]);
 
   // Function filters snacks based on healthy/unhealthy and resets search bar onChange
   const handleSelect = (e) => {
@@ -69,9 +69,6 @@ export default function Snacks() {
       object.is_healthy = true;
     }
   }
-
-
-
 
 function deleteMultiple(id){
 
@@ -159,7 +156,7 @@ console.log(snacks)
       <div className="flex flex-wrap justify-center items-start m-2">
         {snacks.map((snack) => {
           if (snack.bookmarked){
-            return <Snack key={snack.id} snack={snack} />;
+            return <Snack key={snack.id} snack={snack} id={snack.id} />;
           }
         })}
       </div>
@@ -169,7 +166,7 @@ console.log(snacks)
      
         {snacks.map((snack) => {
           if(!snack.bookmarked){
-            return <Snack key={snack.id} snack={snack} />;
+            return <Snack key={snack.id} snack={snack} id={snack.id}/>;
           }
         })}
       </div>
