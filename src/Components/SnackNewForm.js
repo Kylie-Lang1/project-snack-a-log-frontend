@@ -11,9 +11,6 @@ function SnackNewForm() {
       fiber: "",
       protein: "",
       added_sugar: "",
-      is_healthy: false,
-      selected: false,
-      bookmarked: false,
       image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image",
     },
   ]);
@@ -43,9 +40,6 @@ function SnackNewForm() {
     setSnack(temp);
   };
 
-  const handleCheckboxChange = () => {
-    setSnack({ ...snack, is_healthy: !snack.is_healthy });
-  };
 
   const newRow = () => {
     setSnack([
@@ -55,9 +49,6 @@ function SnackNewForm() {
         fiber: "",
         protein: "",
         added_sugar: "",
-        is_healthy: false,
-        selected: false,
-        bookmarked: false,
         image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image",
       },
     ]);
@@ -182,15 +173,6 @@ function SnackNewForm() {
       disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
       invalid:border-pink-500 invalid:text-pink-600
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500 mb-4"
-                />
-              </div>
-              <div>
-                <label htmlFor="is_healthy">Healthy:</label>
-                <input
-                  id="is_healthy"
-                  type="checkbox"
-                  onChange={handleCheckboxChange}
-                  checked={snack.is_healthy}
                 />
               </div>
               <div className="flex justify-around">
