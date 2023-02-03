@@ -23,10 +23,7 @@ export default function Kylie() {
         {viewModal ? (
           <div className="dev">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip
+              My name is Kylie. I am a Pursuit fellow working on gaining full-stack development skills with goals of progressing in the constantly growing field of technology.
             </p>
             <h4 className="p-4 text-center">
               Contact me <span>&#9786;</span>
@@ -49,7 +46,7 @@ export default function Kylie() {
                 <FaGithubSquare />
               </a>
               <a
-                href="mailto: "
+                href="mailto: kylielang@pursuit.org"
                 target="_blank"
                 rel="noreferrer"
                 className="px-4 text-5xl text-red-500"
