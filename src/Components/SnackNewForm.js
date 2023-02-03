@@ -58,6 +58,8 @@ function SnackNewForm() {
         is_healthy: false,
         selected: false,
         bookmarked: false,
+
+
         image: "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image",
       },
     ]);
@@ -184,18 +186,7 @@ function SnackNewForm() {
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500 mb-4"
                 />
               </div>
-              {/* <div>
-                <label htmlFor="is_healthy">Healthy:</label>
-                <input
-                  id="is_healthy"
-                  type="checkbox"
-                  onChange={handleCheckboxChange}
-                  checked={snack.is_healthy}
-                />
-              </div> */}
-            </div>
-          );
-        })}
+
               <div className="flex justify-around">
                 <p
                   onClick={newRow}
@@ -216,6 +207,9 @@ function SnackNewForm() {
                   </button>
                 </Link>
               </div>
+            </div>
+          );
+        })}
       </form>
     </div>
   );

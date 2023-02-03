@@ -32,14 +32,21 @@ function SnackDetails() {
       });
   }, [id, snack]);
   
-
-// Delete request for delete button
-  const handleDelete = () => {
+// Delete request for delete function below
+  const deleteSnack = () => {
     axios
     .delete(`${API}/snacks/${id}`)
     .then(() => navigate(`/snacks`))
     .catch((c) => console.warn("catch", c));
   };
+
+// handleDelete function for delete button
+const handleDelete = () => {
+  let text = "Are you sure you want to delete?"
+  if (window.confirm(text) === true) {
+    deleteSnack()
+  }
+}
 
 // Put request for bookmark button
   const updateBookmark = (updatedSnack, id) => {
@@ -60,8 +67,6 @@ function SnackDetails() {
     updateBookmark(copySnack, id)
   }
 
-
-
   // For loop to determine if snack is healthy or unhealthy
     if (
       (Number(snack.fiber) < 5 && Number(snack.protein) < 5) ||
@@ -71,10 +76,7 @@ function SnackDetails() {
     } else {
       snack.is_healthy = true;
     }
-  
-
-
-
+    
   return (
     <div className={tailwind.details_page}>
         <div className="details-wrapper md:flex">
