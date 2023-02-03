@@ -1,17 +1,40 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import regular from "../assets/heart-regular.png";
 import solid from "../assets/heart-solid.png";
 import { FaBookmark } from "react-icons/fa";
 import { FaRegBookmark } from "react-icons/fa";
 import * as tailwind from "../css/styles"
 
-export default function Snack({ snack }) {
+const API = process.env.REACT_APP_API_URL
+
+export default function Snack({ snack, id }) {
+
+  const [indexSnack, setIndexSnack] = useState(snack);
+  let navigate = useNavigate()
 
   const handleSelect = (e) => {
       let value = e.target.value
       snack.selected = value
       return snack
+  }
+
+  // Put request for bookmark button
+  const updateBookmark = (updatedSnack, id) => {
+    axios
+      .put(`${API}/snacks/${id}`, updatedSnack)
+      .then(() => navigate('/snacks/'))
+      .catch(c => console.warn('catch', c));
+  }
+
+  // onClick function for bookmark button to update bookmark and snack.bookmark state
+  const handleBookmark = () => {
+    const copySnack = {...indexSnack}
+    copySnack.bookmarked = !indexSnack.bookmarked
+    setIndexSnack(copySnack)
+    
+    updateBookmark(copySnack, id)
   }
 
   return (
@@ -47,9 +70,20 @@ export default function Snack({ snack }) {
               </span>
             )}
             {
-              snack.bookmarked ?
-              <FaBookmark className={tailwind.index_bookmark}/> :
-              <FaRegBookmark className={tailwind.index_bookmark} />
+              indexSnack.bookmarked ? (
+                <button className="border-none" onClick={handleBookmark}>
+                  <FaBookmark 
+                  className={tailwind.index_bookmark}
+                  
+                  /> 
+                </button>
+              ) : (
+                <button className="border-none" onClick={handleBookmark}>
+                  <FaRegBookmark 
+                    className={tailwind.index_bookmark} 
+                  />
+                </button>
+              )
             }
           </div>
         </div>
