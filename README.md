@@ -12,15 +12,13 @@ Front-end: https://cfkt.netlify.app/
 
 Back-end: https://thunderous-tulumba-a3f46f.netlify.app/ 
 
-# Full Stack Application Pair Project
+# Overview
 
 ## Snack-a-log
 
 An app that allows users to log their favorite snacks and enables users to see whether or not their snack is healthy based on a simple algorithm.
 
 For this project, there are 45 features, points, functionalities to build. A minimum of 32 points are needed to pass this project.
-
-## Overview
 
 ## Front-end User Stories and Acceptance Criteria
 [Click here for Back-end Instructions](https://github.com/9-1-pursuit/project-snack-a-log-backend)
@@ -48,8 +46,6 @@ For this project, there are 45 features, points, functionalities to build. A min
 1. Can delete a snack using the app
 
 ## Screenshots
-
-These lightly styled views are to help clarify the project requirements. It would be best if you spent some time styling your app, but you are not required to mimic the style shown below.
 
 ### Index page
 
