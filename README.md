@@ -2,6 +2,13 @@
 
 ## iSnack
 
+### Getting Started
+- fork/clone this github repo along with the backend repo
+- run ```npm run start``` on the frontend to open on a local browser
+- run ```npm run start``` on the backend to start the server
+- run ```npm run db:init``` on the backend to initialize the database schema
+- run ```nom run db:seed``` on the backend to load the seed data into the schema
+
 ### Github Repos:
 Front-end: https://github.com/Kylie-Lang1/project-snack-a-log-frontend
 
