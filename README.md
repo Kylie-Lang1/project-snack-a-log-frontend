@@ -53,16 +53,14 @@ These lightly styled views are to help clarify the project requirements. It woul
 
 ### Index page
 
-![Index page](./assets/index-page.png)
+<img width="1433" alt="iSnackHome" src="https://github.com/Kylie-Lang1/project-snack-a-log-frontend/assets/107490870/2c3aea3a-7ca3-4fff-92c7-0d7cee2e79d8">
+
 
 ### Show page
 
-![Show page](./assets/show-page.png)
+<img width="1432" alt="iSnackDetails" src="https://github.com/Kylie-Lang1/project-snack-a-log-frontend/assets/107490870/c586281a-2e69-41c6-b902-18bcc55a965b">
+
 
 ### New page
 
-![New page](./assets/new-page.png)
-
-### Edit page
-
-![Edit Page](./assets/edit-page.png)
+<img width="1432" alt="iSnackForm" src="https://github.com/Kylie-Lang1/project-snack-a-log-frontend/assets/107490870/13bebb4f-8813-4ac6-a963-fd61db42e170">
